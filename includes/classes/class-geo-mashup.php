@@ -25,7 +25,7 @@ class WPCV_EO_Maps_Geo_Mashup {
 	 * @access public
 	 * @var bool $is_installed True if Geo Mashup is present, false otherwise.
 	 */
-	public $is_installed = false;
+	public $is_installed;
 
 	/**
 	 * Class constructor.
