@@ -1,0 +1,59 @@
+# Copyright (C) 2022 WPCV
+# This file is distributed under the same license as the Integrate Event Organiser with Maps plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Integrate Event Organiser with Maps 1.0a\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpcv-eo-maps-integration\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-05-17T17:43:37+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: wpcv-eo-maps-integration\n"
+
+#. Plugin Name of the plugin
+msgid "Integrate Event Organiser with Maps"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/WPCV/wpcv-eo-maps-integration"
+msgstr ""
+
+#. Description of the plugin
+msgid "Provides mapping integration for Event Organiser."
+msgstr ""
+
+#. Author of the plugin
+msgid "WPCV"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/WPCV"
+msgstr ""
+
+msgid "A numeric ID must be present to update a Location."
+msgstr ""
+
+msgid "A numeric ID must be present to delete a Location."
+msgstr ""
+
+msgid "Activation failed"
+msgstr ""
+
+msgid "Event Organiser"
+msgstr ""
+
+#. translators: 1: The plugin name, 2: Event Organiser
+msgid "%1$s requires %2$s to be installed and activated."
+msgstr ""
+
+#. translators: %s: Event Organiser
+msgid "This plugin has been deactivated! Please activate %s and try again."
+msgstr ""
+
+#. translators: 1: The opening anchor tag, 2: The closing anchor tag
+msgid "Back to the WordPress %1$splugins page%2$s."
+msgstr ""
