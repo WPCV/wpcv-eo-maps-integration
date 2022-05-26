@@ -134,6 +134,9 @@ class WPCV_EO_Maps_EO_Venue {
 
 		// Convert Venue data to Location data.
 		$location = wpcv_eo_maps()->geo->location_prepare( $venue );
+		if ( empty( $location ) ) {
+			return;
+		}
 
 		// Update the Post Location.
 		$location_id = wpcv_eo_maps()->geo->location_save( $event_id, $location );
@@ -165,6 +168,9 @@ class WPCV_EO_Maps_EO_Venue {
 
 		// Convert Venue data to Location data.
 		$location = wpcv_eo_maps()->geo->location_prepare( $venue );
+		if ( empty( $location ) ) {
+			return;
+		}
 
 		// Create a Geo Mashup Location.
 		$location_id = wpcv_eo_maps()->geo->create( $location, true );
@@ -194,6 +200,9 @@ class WPCV_EO_Maps_EO_Venue {
 
 		// Convert Venue data to Location data.
 		$location = wpcv_eo_maps()->geo->location_prepare( $venue );
+		if ( empty( $location ) ) {
+			return;
+		}
 
 		// Get the correspondence.
 		$existing_location_id = wpcv_eo_maps()->mapping->location_id_get_by_venue_id( $venue_id );
