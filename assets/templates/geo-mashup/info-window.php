@@ -72,16 +72,18 @@ add_filter( 'the_excerpt', [ 'GeoMashupQuery', 'strip_brackets' ] );
 
 				</div><!-- /.post_header -->
 
-				<?php if ( $wp_query->post_count == 1 ) : ?>
-					<div class="storycontent">
-						<p><?php echo wp_strip_all_tags( get_the_excerpt() ); ?></p>
-						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
-					</div>
-				<?php else : ?>
-					<?php if ( ! $has_feature_image ) : ?>
-					<div class="storycontent">
-						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
-					</div>
+				<?php if ( apply_filters( 'wpcv_eo_maps/info_window/content', true ) ) : ?>
+					<?php if ( $wp_query->post_count == 1 ) : ?>
+						<div class="storycontent">
+							<p><?php echo wp_strip_all_tags( get_the_excerpt() ); ?></p>
+							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
+						</div>
+					<?php else : ?>
+						<?php if ( ! $has_feature_image ) : ?>
+						<div class="storycontent">
+							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
+						</div>
+						<?php endif; ?>
 					<?php endif; ?>
 				<?php endif; ?>
 
