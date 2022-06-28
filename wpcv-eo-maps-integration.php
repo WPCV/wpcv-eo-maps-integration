@@ -170,7 +170,12 @@ class WPCV_EO_Maps {
 		// Include class files.
 		include WPCV_EO_GEO_PATH . 'includes/classes/class-mapping.php';
 		include WPCV_EO_GEO_PATH . 'includes/classes/class-eo-venue.php';
-		include WPCV_EO_GEO_PATH . 'includes/classes/class-geo-mashup.php';
+		include WPCV_EO_GEO_PATH . 'includes/classes/class-geo-base.php';
+
+		// Include Geo Mashup class if plugin is present.
+		if ( class_exists( 'GeoMashup' ) ) {
+			include WPCV_EO_GEO_PATH . 'includes/classes/class-geo-mashup.php';
+		}
 
 	}
 
@@ -184,7 +189,16 @@ class WPCV_EO_Maps {
 		// Initialise objects.
 		$this->mapping = new WPCV_EO_Maps_Mapping();
 		$this->eo      = new WPCV_EO_Maps_EO_Venue();
-		$this->geo     = new WPCV_EO_Maps_Geo_Mashup();
+
+		// Initialise Geo Mashup object if plugin is present.
+		if ( class_exists( 'GeoMashup' ) ) {
+			$this->geo = new WPCV_EO_Maps_Geo_Mashup();
+		}
+
+		// If all else fails, use Base class.
+		if ( ! isset( $this->geo ) ) {
+			$this->geo = new WPCV_EO_Maps_Geo_Base();
+		}
 
 	}
 

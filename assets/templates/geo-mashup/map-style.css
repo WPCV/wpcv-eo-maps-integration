@@ -1,0 +1,183 @@
+/**
+ * Geo Mashup Map styles.
+ *
+ * This is a copy of "map-style-default.css" in the Geo Mashup plugin directory.
+ *
+ * @package WPCV_EO_Maps
+ * @since 1.0
+ */
+
+
+
+/* Maps fill the frame, makes percentage height maps a bit easier */
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+/* Post date and tags/categories */
+.meta {
+	font-size: 60%;
+}
+
+.meta .blogdate {
+	font-style: italic;
+}
+
+
+
+/* Info window */
+.locationinfo {
+	font-size: 80%;
+	overflow: auto;
+	width: 300px;
+	height: 150px;
+}
+
+.user-location-info {
+	font-size: 80%;
+	overflow: auto;
+	width: 150px;
+	height: 80px;
+}
+
+.comment-location-info {
+	font-size: 80%;
+	overflow: auto;
+	width: 200px;
+	height: 140px;
+}
+
+.info-window-max {
+	font-size: 80%;
+	overflow: auto;
+}
+
+
+
+/* Title link style */
+.locationinfo h2 a,
+.info-window-max h2 a {
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+/* Blurb */
+.post-location-info .location-post {
+	margin: 0 0 10px 0;
+}
+
+.post-location-info .post_header {
+	position: relative;
+	padding: 5px;
+	border: 1px solid #ddd;
+	border-bottom: none;
+	background: #f6f6f6;
+}
+
+/* When the item has a Feature Image */
+.post-location-info .post_header.has_feature_image {
+	border: none;
+	position: relative;
+	padding: 0;
+}
+
+	.post-location-info .post_header.has_feature_image a.feature-link {
+		display: block;
+		line-height: 0;
+	}
+
+	.post-location-info .post_header.has_feature_image .post_header_text {
+		width: 280px;
+		margin: 0;
+		padding: 10px;
+		background: #fff;
+		background: rgba( 255, 255, 255, 0.66 );
+		position: absolute;
+		bottom: 0;
+	}
+
+	/* Post title */
+	.post-location-info .post_header h2 {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 1.4em;
+		font-weight: 400;
+		margin: 0 0 0.2em 0;
+		padding: 0;
+		line-height: 1;
+	}
+
+	.post-location-info .post_header h2 a {
+		color: #202B6D;
+		text-decoration: none;
+	}
+
+	.post-location-info p.postname {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 0.8em;
+		color: #999;
+		margin: 0 0 0.2em 0;
+		padding: 0 2px;
+		line-height: 1;
+	}
+
+	.post-location-info .post_header.has_feature_image p.postname {
+		color: #202B6D;
+	}
+
+		.post-location-info p.postname a {
+			color: #999;
+			text-decoration: underline;
+		}
+
+		.post-location-info .post_header.has_feature_image p.postname a {
+			color: #202B6D;
+		}
+
+
+
+/* Blurb */
+.post-location-info .location-post .storycontent {
+	padding: 5px 5px 15px 5px;
+	border: 1px solid #ddd;
+	border-top: none;
+	background: #f6f6f6;
+}
+
+	.post-location-info .location-post .storycontent p {
+		margin: 0 0 15px 0;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		line-height: 1.6;
+		font-size: 11px !important;
+	}
+
+		.post-location-info .location-post .storycontent a.more-link {
+			text-transform: uppercase;
+			font-size: 11px !important;
+			font-weight: bold;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			padding: 5px 7px;
+			color: #fff;
+			background-color: #B8C7E5;
+			text-decoration: none;
+			-moz-border-radius: 4px;
+			-khtml-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+			line-height: 1;
+		}
+
+		.post-location-info .location-post .storycontent a.more-link:hover {
+			color: #fff;
+			background-color: #202B6D;
+		}

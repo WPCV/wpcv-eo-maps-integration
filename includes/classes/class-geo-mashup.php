@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0
  */
-class WPCV_EO_Maps_Geo_Mashup {
+class WPCV_EO_Maps_Geo_Mashup extends WPCV_EO_Maps_Geo_Base {
 
 	/**
 	 * Geo Mashup installed flag.
@@ -34,8 +34,8 @@ class WPCV_EO_Maps_Geo_Mashup {
 	 */
 	public function __construct() {
 
-		// Init when this plugin is fully loaded.
-		add_action( 'wpcv_eo_maps/loaded', [ $this, 'initialise' ] );
+		// Init parent.
+		parent::__construct();
 
 	}
 
@@ -74,6 +74,11 @@ class WPCV_EO_Maps_Geo_Mashup {
 		if ( ! $this->is_installed() ) {
 			return;
 		}
+
+		// Instantiate Geo Mashup Custom class.
+		global $geo_mashup_custom;
+		include WPCV_EO_GEO_PATH . 'includes/classes/class-geo-mashup-custom.php';
+		$geo_mashup_custom = new WPCV_EO_Maps_Geo_Mashup_Custom();
 
 		// Register all hooks.
 		$this->register_hooks();
