@@ -71,14 +71,11 @@ class WPCV_EO_Maps_Geo_Mashup_Custom {
 	public function __get( $key ) {
 
 		// Return filtered values.
-		switch ( $key ) {
-			case 'dir_path' :
-				return $this->get_dir_path();
-				break;
-
-			case 'url_path' :
-				return $this->get_url_path();
-				break;
+		if ( 'dir_path' === $key ) {
+			return $this->get_dir_path();
+		}
+		if ( 'url_path' === $key ) {
+			return $this->get_url_path();
 		}
 
 		// Return null for anything else.
