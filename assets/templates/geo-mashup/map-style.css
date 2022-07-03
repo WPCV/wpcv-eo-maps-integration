@@ -93,23 +93,23 @@ body {
 }
 
 /* When the item has a Feature Image */
-.post-location-info .post_header.has_feature_image {
+.post-location-info .has_feature_image .post_header {
 	border: none;
 	position: relative;
 	padding: 0;
 }
 
-	.post-location-info .post_header.has_feature_image a.feature-link {
+	.post-location-info .has_feature_image .post_header a.feature-link {
 		display: block;
 		line-height: 0;
 	}
 
-	.post-location-info .post_header.has_feature_image a.feature-link img {
+	.post-location-info .has_feature_image .post_header a.feature-link img {
 		max-width: 100%;
 		height: auto;
    	}
 
-	.post-location-info .post_header.has_feature_image .post_header_text {
+	.post-location-info .has_feature_image .post_header .post_header_text {
 		width: 94%;
 		margin: 0;
 		padding: 3%;
@@ -121,7 +121,7 @@ body {
 
 	/* Post title */
 	.post-location-info .post_header h2 {
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-family: sans-serif;
 		font-size: 1.6em;
 		font-weight: 400;
 		margin: 0 0 0.1em 0;
@@ -130,12 +130,16 @@ body {
 	}
 
 	.post-location-info .post_header h2 a {
-		color: #fff;
+		color: #384677;
 		text-decoration: none;
 	}
 
+	.post-location-info .has_feature_image .post_header  h2 a {
+		color: #fff;
+	}
+
 	.post-location-info p.postname {
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-family: sans-serif;
 		font-size: 0.8em;
 		color: #999;
 		margin: 0 0 0.2em 0;
@@ -143,7 +147,7 @@ body {
 		line-height: 1;
 	}
 
-	.post-location-info .post_header.has_feature_image p.postname {
+	.post-location-info .has_feature_image .post_header p.postname {
 		color: #202B6D;
 	}
 
@@ -152,7 +156,7 @@ body {
 			text-decoration: underline;
 		}
 
-		.post-location-info .post_header.has_feature_image p.postname a {
+		.post-location-info .has_feature_image .post_header p.postname a {
 			color: #202B6D;
 		}
 
@@ -168,16 +172,17 @@ body {
 
 	.post-location-info .location-post .storycontent p {
 		margin: 0 0 15px 0;
-		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-family: sans-serif;
 		line-height: 1.6;
 		font-size: 11px !important;
+		font-weight: 400;
 	}
 
 		.post-location-info .location-post .storycontent a.more-link {
 			text-transform: uppercase;
 			font-size: 11px !important;
 			font-weight: bold;
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-family: sans-serif;
 			padding: 5px 7px;
 			color: #fff;
 			background-color: #3199cc;

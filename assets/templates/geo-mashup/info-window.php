@@ -13,7 +13,7 @@
  */
 
 // Modify the Post Thumbnail size.
-add_filter( 'post_thumbnail_size', [ 'GeoMashupQuery', 'post_thumbnail_size' ]);
+add_filter( 'post_thumbnail_size', [ 'GeoMashupQuery', 'post_thumbnail_size' ] );
 
 // A potentially heavy-handed way to remove shortcode-like content.
 add_filter( 'the_excerpt', [ 'GeoMashupQuery', 'strip_brackets' ] );
@@ -44,26 +44,43 @@ add_filter( 'the_excerpt', [ 'GeoMashupQuery', 'strip_brackets' ] );
 				$multiple_items_class = ' multiple_items';
 			}
 
+			// Init feature image array.
+			$feature_image = [
+				'exists'    => false,
+				'class'     => '',
+				'thumbnail' => '',
+			];
+
+			// Maybe fill out array with values.
+			if ( has_post_thumbnail() ) {
+				$feature_image['exists']    = true;
+				$feature_image['class']     = ' has_feature_image';
+				$feature_image['thumbnail'] = get_the_post_thumbnail( get_the_ID(), 'medium' );
+			}
+
+			/**
+			 * Filter the feature image array.
+			 *
+			 * @since 1.0
+			 *
+			 * @param array $feature_image The array of feature image data.
+			 * @param int $post_id The numeric ID of the WordPress Post.
+			 */
+			$feature_image = apply_filters( 'wpcv_eo_maps/info_window/thumbnail', $feature_image, get_the_ID() );
+
+			// Get Post Type.
+			$post_type_class = ' post_type_' . get_post_type( get_the_ID() );
+
 			?>
 
-			<div class="location-post<?php echo $multiple_items_class; ?>">
+			<div class="location-post<?php echo $multiple_items_class . $feature_image['class'] . $post_type_class; ?>">
 
-				<?php
+				<div class="post_header">
 
-				// Init feature image vars.
-				$has_feature_image = false;
-				$feature_image_class = '';
-				if ( has_post_thumbnail() ) {
-					$has_feature_image = true;
-					$feature_image_class = ' has_feature_image';
-				}
-
-				?>
-
-				<div class="post_header<?php echo $feature_image_class; ?>">
-
-					<?php if ( $has_feature_image ) : ?>
-						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="feature-link"><?php the_post_thumbnail( 'medium' ); ?></a>
+					<?php if ( true === $feature_image['exists'] ) : ?>
+						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="feature-link">
+							<?php echo $feature_image['thumbnail']; ?>
+						</a>
 					<?php endif; ?>
 
 					<div class="post_header_text">
@@ -72,18 +89,36 @@ add_filter( 'the_excerpt', [ 'GeoMashupQuery', 'strip_brackets' ] );
 
 				</div><!-- /.post_header -->
 
-				<?php if ( apply_filters( 'wpcv_eo_maps/info_window/content', true ) ) : ?>
-					<?php if ( $wp_query->post_count == 1 ) : ?>
+				<?php if ( apply_filters( 'wpcv_eo_maps/info_window/content', true, get_the_ID() ) ) : ?>
+					<?php if ( 1 === (int) $wp_query->post_count ) : ?>
+
 						<div class="storycontent">
-							<p><?php echo wp_strip_all_tags( get_the_excerpt() ); ?></p>
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
+							<p>
+							<?php
+
+							echo apply_filters(
+								'wpcv_eo_maps/info_window/content',
+								wp_strip_all_tags( get_the_excerpt() ),
+								get_the_ID()
+							);
+
+							?>
+							</p>
+							<?php if ( apply_filters( 'wpcv_eo_maps/info_window/more_link', true, get_the_ID() ) ) : ?>
+								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
+							<?php endif; ?>
 						</div>
+
 					<?php else : ?>
-						<?php if ( ! $has_feature_image ) : ?>
-						<div class="storycontent">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
-						</div>
+
+						<?php if ( false === $feature_image['exists'] ) : ?>
+							<div class="storycontent">
+								<?php if ( apply_filters( 'wpcv_eo_maps/info_window/more_link', true, get_the_ID() ) ) : ?>
+									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="more-link"><?php esc_html_e( 'Read more', 'wpcv-eo-maps-integration' ); ?></a>
+								<?php endif; ?>
+							</div>
 						<?php endif; ?>
+
 					<?php endif; ?>
 				<?php endif; ?>
 
@@ -94,7 +129,7 @@ add_filter( 'the_excerpt', [ 'GeoMashupQuery', 'strip_brackets' ] );
 	<?php else : ?>
 
 		<h2 class="center"><?php esc_html_e( 'Not Found', 'wpcv-eo-maps-integration' ); ?></h2>
-		<p class="center"><?php esc_html_e( 'Sorry, but you are looking for something that isn’t here.', 'wpcv-eo-maps-integration' ); ?></p>
+		<p class="center"><?php esc_html_e( 'Sorry, but we can’t find what you are looking for.', 'wpcv-eo-maps-integration' ); ?></p>
 
 	<?php endif; ?>
 
