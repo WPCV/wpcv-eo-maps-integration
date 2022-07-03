@@ -12,7 +12,7 @@
  */
 
 // Avoid nested maps.
-add_filter( 'the_content', [ 'GeoMashupQuery', 'strip_map_shortcodes' ], 1, 9 );
+add_filter( 'the_content', [ 'GeoMashupQuery', 'strip_map_shortcodes' ], 1 );
 
 ?><!-- assets/templates/geo-mashup/info-window-max.php -->
 
